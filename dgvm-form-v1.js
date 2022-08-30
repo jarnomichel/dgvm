@@ -207,7 +207,7 @@ document.querySelectorAll("#wf-form-gem-aanmeld-mob input").forEach(function(ele
     });
 });
 
-      const form2  = document.getElementsByTagName('form2')[0];
+      const form2  = document.getElementsByTagName('form')[0];
       const emailError2 = document.querySelector('#email_error-2');
       const gemeenteError2 = document.querySelector('#gemeente_error-2');
       const submit2 = document.getElementById('submit-2');
@@ -221,7 +221,7 @@ document.querySelector("#wf-form-gem-aanmeld-mob").addEventListener('submit', fu
     e.preventDefault();
       
       formMessage.classList.add('form-done');
-      var formData = new FormData(form);
+      var formData = new FormData(form2);
       var xhr = new XMLHttpRequest();
       xhr.open("POST", form.action, true);
       xhr.send(formData);
@@ -251,7 +251,7 @@ document.querySelector("#wf-form-gem-aanmeld-mob").addEventListener('submit', fu
             else
                 element.classList.add('error-input');
         });
-        $('form2 input.error-input:first').focus(); 
+        $('form input.error-input:first').focus(); 
         e.preventDefault();
    
     }    
@@ -324,7 +324,7 @@ document.querySelector("#wf-form-gem-aanmeld-mob").addEventListener('submit', fu
     if(!email2.validity.valid) {
           // If it isn't, we display an appropriate error message
           showErrorEmail();
-          $('form2 input.error-input:first').focus(); 
+          $('form input.error-input:first').focus(); 
           // Then we prevent the form from being sent by canceling the event
           event.preventDefault();
         }
@@ -332,7 +332,7 @@ document.querySelector("#wf-form-gem-aanmeld-mob").addEventListener('submit', fu
     if(!gemeente2.validity.valid) {
       // If it isn't, we display an appropriate error message
       showErrorGemeente();
-      $('form2 input.error-input:first').focus(); 
+      $('form input.error-input:first').focus(); 
       // Then we prevent the form from being sent by canceling the event
       event.preventDefault();
     }
