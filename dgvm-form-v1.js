@@ -1,6 +1,3 @@
-
-<script>
-
 const email = document.getElementById('email');
 const gemeente = document.getElementById('gemeente');
  
@@ -377,6 +374,3 @@ document.querySelector("#wf-form-gem-aanmeld-mob").addEventListener('submit', fu
             // Set the styling appropriately
             gemeenteError.className = 'form-field-error active';
       }
-
-
-    </script>
