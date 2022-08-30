@@ -186,11 +186,11 @@ document.querySelector("#wf-form-gem-aanmeld").addEventListener('submit', functi
 
 
 
-const email = document.getElementById('email-2');
-const gemeente = document.getElementById('gemeente-2');
+const email2 = document.getElementById('email-2');
+const gemeente2 = document.getElementById('gemeente-2');
  
 /* give error class */
-document.querySelectorAll("#wf-form-gem-aanmeld input").forEach(function(element) {
+document.querySelectorAll("#wf-form-gem-aanmeld-mob input").forEach(function(element) {
     element.addEventListener('blur', function() {
         // if input field passes validation remove the error class, else add it
         if(!this.checkValidity())
@@ -199,7 +199,7 @@ document.querySelectorAll("#wf-form-gem-aanmeld input").forEach(function(element
 });
 
 
-document.querySelectorAll("#wf-form-gem-aanmeld input").forEach(function(element) {
+document.querySelectorAll("#wf-form-gem-aanmeld-mob input").forEach(function(element) {
     element.addEventListener('keyup', function() {
         // if input field passes validation remove the error class, else add it
         if(this.checkValidity())
@@ -207,11 +207,11 @@ document.querySelectorAll("#wf-form-gem-aanmeld input").forEach(function(element
     });
 });
 
-      const form  = document.getElementsByTagName('form')[0];
-      const emailError = document.querySelector('#email_error');
-      const gemeenteError = document.querySelector('#gemeente_error');
-      const submit = document.getElementById('submit-2');
-      const formMessage = document.getElementById("form-message-2");
+      const form2  = document.getElementsByTagName('form2')[0];
+      const emailError2 = document.querySelector('#email_error-2');
+      const gemeenteError2 = document.querySelector('#gemeente_error-2');
+      const submit2 = document.getElementById('submit-2');
+      const formMessage2 = document.getElementById("form-message-2");
 
 /* submit event on form */
 document.querySelector("#wf-form-gem-aanmeld-mob").addEventListener('submit', function(e) {
@@ -251,7 +251,7 @@ document.querySelector("#wf-form-gem-aanmeld-mob").addEventListener('submit', fu
             else
                 element.classList.add('error-input');
         });
-        $('form input.error-input:first').focus(); 
+        $('form2 input.error-input:first').focus(); 
         e.preventDefault();
    
     }    
@@ -260,44 +260,44 @@ document.querySelector("#wf-form-gem-aanmeld-mob").addEventListener('submit', fu
 
 
 
-      email.addEventListener('blur', function (event) {
+      email2.addEventListener('blur', function (event) {
         // Each time the user types something, we check if the
         // form fields are valid.
 
-        if (email.validity.valid) {
+        if (email2.validity.valid) {
           // In case there is an error message visible, if the field
           // is valid, we remove the error message.
-          emailError.textContent = ''; // Reset the content of the message
-          emailError.className = 'form-field-error'; // Reset the visual state of the message
+          emailError2.textContent = ''; // Reset the content of the message
+          emailError2.className = 'form-field-error'; // Reset the visual state of the message
         } else {
           // If there is still an error, show the correct error
           showErrorEmail();
         }
       });
 
-      email.addEventListener('keyup', function (event) {
+      email2.addEventListener('keyup', function (event) {
         // Each time the user types something, we check if the
         // form fields are valid.
 
-        if (email.validity.valid) {
+        if (email2.validity.valid) {
           // In case there is an error message visible, if the field
           // is valid, we remove the error message.
-          emailError.textContent = ''; // Reset the content of the message
-          emailError.className = 'form-field-error'; // Reset the visual state of the message
-          gemeenteError.className = 'form-field-error'; // Reset the visual state of the message
+          emailError2.textContent = ''; // Reset the content of the message
+          emailError2.className = 'form-field-error'; // Reset the visual state of the message
+          gemeenteError2.className = 'form-field-error'; // Reset the visual state of the message
         }
       });
 
-      gemeente.addEventListener('blur', function (event) {
+      gemeente2.addEventListener('blur', function (event) {
     // Each time the user types something, we check if the
     // form fields are valid.
 
-    if (gemeente.validity.valid) {
+    if (gemeente2.validity.valid) {
       // In case there is an error message visible, if the field
       // is valid, we remove the error message.
-      gemeenteError.textContent = ''; // Reset the content of the message
-      gemeenteError.className = 'form-field-error'; // Reset the visual state of the message
-      emailError.className = 'form-field-error'; // Reset the visual state of the message
+      gemeenteError2.textContent = ''; // Reset the content of the message
+      gemeenteError2.className = 'form-field-error'; // Reset the visual state of the message
+      emailError2.className = 'form-field-error'; // Reset the visual state of the message
 
     } else {
       // If there is still an error, show the correct error
@@ -305,34 +305,34 @@ document.querySelector("#wf-form-gem-aanmeld-mob").addEventListener('submit', fu
     }
   });
 
-  gemeente.addEventListener('keyup', function (event) {
+  gemeente2.addEventListener('keyup', function (event) {
     // Each time the user types something, we check if the
     // form fields are valid.
 
-    if (gemeente.validity.valid) {
+    if (gemeente2.validity.valid) {
       // In case there is an error message visible, if the field
       // is valid, we remove the error message.
-      gemeenteError.textContent = ''; // Reset the content of the message
-      gemeenteError.className = 'form-field-error'; // Reset the visual state of the message
+      gemeenteError2.textContent = ''; // Reset the content of the message
+      gemeenteError2.className = 'form-field-error'; // Reset the visual state of the message
     }
   });
 
-  form.addEventListener('submit', function (event) {
+  form2.addEventListener('submit', function (event) {
     // if the gemeente field is valid, we let the form submit
 
 
-    if(!email.validity.valid) {
+    if(!email2.validity.valid) {
           // If it isn't, we display an appropriate error message
           showErrorEmail();
-          $('form input.error-input:first').focus(); 
+          $('form2 input.error-input:first').focus(); 
           // Then we prevent the form from being sent by canceling the event
           event.preventDefault();
         }
 
-    if(!gemeente.validity.valid) {
+    if(!gemeente2.validity.valid) {
       // If it isn't, we display an appropriate error message
       showErrorGemeente();
-      $('form input.error-input:first').focus(); 
+      $('form2 input.error-input:first').focus(); 
       // Then we prevent the form from being sent by canceling the event
       event.preventDefault();
     }
@@ -340,34 +340,34 @@ document.querySelector("#wf-form-gem-aanmeld-mob").addEventListener('submit', fu
   });
 
       function showErrorEmail() {
-            if(email.validity.valueMissing) {
+            if(email2.validity.valueMissing) {
             // If the field is empty,
             // display the following error message.
-            emailError.textContent = 'Het veld e-mailadres is niet ingevuld. Vul minstens het veld e-mailadres óf het veld telefoonnummer in.';
-          } else if(email.validity.typeMismatch) {
+            emailError2.textContent = 'Het veld e-mailadres is niet ingevuld. Vul minstens het veld e-mailadres óf het veld telefoonnummer in.';
+          } else if(email2.validity.typeMismatch) {
               // If the field doesn't contain an email address,
               // display the following error message.
-              emailError.textContent = 'Het veld e-mailadres is niet juist ingevuld. Vul een geldig e-mailadres in.';
-            } else if(email.validity.tooShort) {
+              emailError2.textContent = 'Het veld e-mailadres is niet juist ingevuld. Vul een geldig e-mailadres in.';
+            } else if(email2.validity.tooShort) {
               // If the data is too short,
               // display the following error message.
-              emailError.textContent = `Een e-mailadres in het veld e-mailadres moet minstens ${ email.minLength } tekens bevatten; Jij vulde in: ${ email.value.length }.`;
+              emailError2.textContent = `Een e-mailadres in het veld e-mailadres moet minstens ${ email2.minLength } tekens bevatten; Jij vulde in: ${ email2.value.length }.`;
             }
             // Set the styling appropriately
-            emailError.className = 'form-field-error active';
+            emailError2.className = 'form-field-error active';
 
       }
 
       function showErrorGemeente() {
-            if(gemeente.validity.valueMissing) {
+            if(gemeente2.validity.valueMissing) {
             // If the field is empty,
             // display the following error message.
-            gemeenteError.textContent = 'Het veld voor gemeente en/​of woningcorporatie is niet ingevuld. Dit veld is verplicht.';
-            } else if(gemeente.validity.tooShort) {
+            gemeenteError2.textContent = 'Het veld voor gemeente en/​of woningcorporatie is niet ingevuld. Dit veld is verplicht.';
+            } else if(gemeente2.validity.tooShort) {
               // If the data is too short,
               // display the following error message.
-              gemeenteError.textContent = `De naam van de gemeente en/​of woningcorporatie moet minstens ${ gemeente.minLength } tekens bevatten; Jij vulde in: ${ gemeente.value.length }.`;
+              gemeenteError2.textContent = `De naam van de gemeente en/​of woningcorporatie moet minstens ${ gemeente2.minLength } tekens bevatten; Jij vulde in: ${ gemeente2.value.length }.`;
             }
             // Set the styling appropriately
-            gemeenteError.className = 'form-field-error active';
+            gemeenteError2.className = 'form-field-error active';
       }
