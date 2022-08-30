@@ -185,9 +185,6 @@ document.querySelector("#wf-form-gem-aanmeld").addEventListener('submit', functi
       }
 
 
-    </script>
-    
-    <script>
 
 const email = document.getElementById('email-2');
 const gemeente = document.getElementById('gemeente-2');
