@@ -10,7 +10,7 @@ window.addEventListener("DOMContentLoaded", function () {
   const currentPage = window.location.href;
 
   // Compare the URL with the condition and hide the div if matched
-  if (currentPage.includes("organisatie/groningen")) {
+  if ( (currentPage.includes("organisatie/groningen")) || (currentPage.includes("organisatie/test-onderhoud")) ) {
     document.getElementById("postcode-wrap").classList.remove("hidden");
     postcode.setAttribute("required", "");
   }
