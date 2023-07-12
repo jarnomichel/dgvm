@@ -11,8 +11,7 @@ window.addEventListener("DOMContentLoaded", function () {
 
   // Compare the URL with the condition and hide the div if matched
   if (
-    currentPage.includes("organisatie/groningen") ||
-    currentPage.includes("organisatie/test-onderhoud")
+    currentPage.includes("organisatie/groningen")
   ) {
     document.getElementById("postcode-wrap").classList.remove("hidden");
     postcode.setAttribute("required", "");
