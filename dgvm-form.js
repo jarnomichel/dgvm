@@ -10,7 +10,10 @@ window.addEventListener("DOMContentLoaded", function () {
   const currentPage = window.location.href;
 
   // Compare the URL with the condition and hide the div if matched
-  if ( (currentPage.includes("organisatie/groningen")) || (currentPage.includes("organisatie/test-onderhoud")) ) {
+  if (
+    currentPage.includes("organisatie/groningen") ||
+    currentPage.includes("organisatie/test-onderhoud")
+  ) {
     document.getElementById("postcode-wrap").classList.remove("hidden");
     postcode.setAttribute("required", "");
   }
@@ -338,7 +341,7 @@ function showErrorPhone() {
     postcodeError.textContent =
       "Het veld postcode is niet ingevuld. Vul een geldige postcode in.";
   } else if (postcode.validity.typeMismatch) {
-    // If the field doesn't contain an email address,
+    // If the field doesn't contain an postcode,
     // display the following error message.
     postcodeError.textContent =
       "Het veld postcode is niet juist ingevuld. Vul een geldige postcode in. (4 cijfers en 2 letters.)";
