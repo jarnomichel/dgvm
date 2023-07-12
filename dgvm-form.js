@@ -11,7 +11,8 @@ window.addEventListener("DOMContentLoaded", function () {
 
   // Compare the URL with the condition and hide the div if matched
   if (
-    currentPage.includes("organisatie/groningen")
+    currentPage.includes("organisatie/groningen") ||
+    currentPage.includes("organisatie/test-onderhoud")
   ) {
     document.getElementById("postcode-wrap").classList.remove("hidden");
     postcode.setAttribute("required", "");
@@ -52,7 +53,8 @@ postcode.addEventListener("blur", function (event) {
       .classList.remove("active");
   } else if (
     postcode.value.length === 0 &&
-    currentPage.includes("organisatie/groningen")
+    (currentPage.includes("organisatie/groningen") ||
+      currentPage.includes("organisatie/test-onderhoud"))
   ) {
     postcode.setAttribute("required", "");
     postcode.previousElementSibling
@@ -215,35 +217,6 @@ phone.addEventListener("keyup", function (event) {
   }
 });
 
-phone.addEventListener("blur", function (event) {
-  // Each time the user types something, we check if the
-  // form fields are valid.
-
-  if (phone.validity.valid) {
-    // In case there is an error message visible, if the field
-    // is valid, we remove the error message.
-    phoneError.textContent = ""; // Reset the content of the message
-    phoneError.className = "form-field-error"; // Reset the visual state of the message
-    emailError.className = "form-field-error"; // Reset the visual state of the message
-    postcodeError.className = "form-field-error"; // Reset the visual state of the message
-  } else {
-    // If there is still an error, show the correct error
-    showErrorPhone();
-  }
-});
-
-phone.addEventListener("keyup", function (event) {
-  // Each time the user types something, we check if the
-  // form fields are valid.
-
-  if (phone.validity.valid) {
-    // In case there is an error message visible, if the field
-    // is valid, we remove the error message.
-    phoneError.textContent = ""; // Reset the content of the message
-    phoneError.className = "form-field-error"; // Reset the visual state of the message
-  }
-});
-
 postcode.addEventListener("blur", function (event) {
   // Each time the user types something, we check if the
   // form fields are valid.
@@ -257,7 +230,7 @@ postcode.addEventListener("blur", function (event) {
     postcodeError.className = "form-field-error"; // Reset the visual state of the message
   } else {
     // If there is still an error, show the correct error
-    showErrorPhone();
+    showErrorPostcode();
   }
 });
 
@@ -287,6 +260,14 @@ form.addEventListener("submit", function (event) {
   if (!phone.validity.valid) {
     // If it isn't, we display an appropriate error message
     showErrorPhone();
+    $("form input.error-input:first").focus();
+    // Then we prevent the form from being sent by canceling the event
+    event.preventDefault();
+  }
+
+  if (!postcode.validity.valid) {
+    // If it isn't, we display an appropriate error message
+    showErrorPostcode();
     $("form input.error-input:first").focus();
     // Then we prevent the form from being sent by canceling the event
     event.preventDefault();
@@ -333,22 +314,27 @@ function showErrorPhone() {
   phoneError.className = "form-field-error active";
 }
 
-function showErrorPhone() {
-  if (postcode.validity.valueMissing) {
-    // If the field is empty,
-    // display the following error message.
-    postcodeError.textContent =
-      "Het veld postcode is niet ingevuld. Vul een geldige postcode in.";
-  } else if (postcode.validity.typeMismatch) {
-    // If the field doesn't contain an postcode,
-    // display the following error message.
-    postcodeError.textContent =
-      "Het veld postcode is niet juist ingevuld. Vul een geldige postcode in. (4 cijfers en 2 letters.)";
-  } else if (postcode.validity.tooShort) {
-    // If the data is too short,
-    // display the following error message.
-    postcodeError.textContent = `Een postcode in het veld postcode moet minstens ${postcode.minLength} tekens bevatten; Jij vulde in: ${postcode.value.length}.`;
+if (
+  currentPage.includes("organisatie/groningen") ||
+  currentPage.includes("organisatie/test-onderhoud")
+) {
+  function showErrorPostcode() {
+    if (postcode.validity.valueMissing) {
+      // If the field is empty,
+      // display the following error message.
+      postcodeError.textContent =
+        "Het veld postcode is niet ingevuld. Vul een geldige postcode in.";
+    } else if (postcode.validity.typeMismatch) {
+      // If the field doesn't contain an postcode,
+      // display the following error message.
+      postcodeError.textContent =
+        "Het veld postcode is niet juist ingevuld. Vul een geldige postcode in. (4 cijfers en 2 letters.)";
+    } else if (postcode.validity.tooShort) {
+      // If the data is too short,
+      // display the following error message.
+      postcodeError.textContent = `Een postcode in het veld postcode moet minstens ${postcode.minLength} tekens bevatten; Jij vulde in: ${postcode.value.length}.`;
+    }
+    // Set the styling
+    postcodeError.className = "form-field-error active";
   }
-  // Set the styling
-  postcodeError.className = "form-field-error active";
 }
