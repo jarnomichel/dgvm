@@ -5,19 +5,16 @@ $(".modal-open-top").click(function () {
 const email = document.getElementById("email");
 const phone = document.getElementById("phone");
 const postcode = document.getElementById("postcode");
+const currentPage = window.location.href;
 
-window.addEventListener("DOMContentLoaded", function () {
-  const currentPage = window.location.href;
-
-  // Compare the URL with the condition and hide the div if matched
-  if (
-    currentPage.includes("organisatie/groningen") ||
-    currentPage.includes("organisatie/test-onderhoud")
-  ) {
-    document.getElementById("postcode-wrap").classList.remove("hidden");
-    postcode.setAttribute("required", "");
-  }
-});
+// Compare the URL with the condition and hide the div if matched
+if (
+  currentPage.includes("organisatie/groningen") ||
+  currentPage.includes("organisatie/test-onderhoud")
+) {
+  document.getElementById("postcode-wrap").classList.remove("hidden");
+  postcode.setAttribute("required", "");
+}
 
 /* email of phone required */
 phone.addEventListener("blur", function (event) {
