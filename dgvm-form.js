@@ -8,10 +8,7 @@ const postcode = document.getElementById("postcode");
 const currentPage = window.location.href;
 
 // Compare the URL with the condition and hide the div if matched
-if (
-  currentPage.includes("organisatie/groningen") ||
-  currentPage.includes("organisatie/test-onderhoud")
-) {
+if (currentPage.includes("organisatie/groningen")) {
   document.getElementById("postcode-wrap").classList.remove("hidden");
   postcode.setAttribute("required", "");
 }
@@ -50,8 +47,7 @@ postcode.addEventListener("blur", function (event) {
       .classList.remove("active");
   } else if (
     postcode.value.length === 0 &&
-    (currentPage.includes("organisatie/groningen") ||
-      currentPage.includes("organisatie/test-onderhoud"))
+    currentPage.includes("organisatie/groningen")
   ) {
     postcode.setAttribute("required", "");
     postcode.previousElementSibling
@@ -311,10 +307,7 @@ function showErrorPhone() {
   phoneError.className = "form-field-error active";
 }
 
-if (
-  currentPage.includes("organisatie/groningen") ||
-  currentPage.includes("organisatie/test-onderhoud")
-) {
+if (currentPage.includes("organisatie/groningen")) {
   function showErrorPostcode() {
     if (postcode.validity.valueMissing) {
       // If the field is empty,
@@ -326,10 +319,16 @@ if (
       // display the following error message.
       postcodeError.textContent =
         "Het veld postcode is niet juist ingevuld. Vul een geldige postcode in. (4 cijfers en 2 letters.)";
+    } else if (postcode.validity.patternMismatch) {
+      // If the field doesn't contain an postcode,
+      // display the following error message.
+      postcodeError.textContent =
+        "Het veld postcode is niet juist ingevuld. Vul een geldige postcode in. (4 cijfers en 2 letters.)";
     } else if (postcode.validity.tooShort) {
       // If the data is too short,
       // display the following error message.
-      postcodeError.textContent = `Een postcode in het veld postcode moet minstens ${postcode.minLength} tekens bevatten; Jij vulde in: ${postcode.value.length}.`;
+      postcodeError.textContent =
+        "Het veld postcode is niet juist ingevuld. Vul een geldige postcode in. (4 cijfers en 2 letters.)";
     }
     // Set the styling
     postcodeError.className = "form-field-error active";
